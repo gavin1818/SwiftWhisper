@@ -11,6 +11,11 @@ public class WhisperParams {
 
     public init(strategy: WhisperSamplingStrategy = .greedy) {
         self.whisperParams = whisper_full_default_params(whisper_sampling_strategy(rawValue: strategy.rawValue))
+        let initialPrompt = "Use capital letters and punctuation. Do not repeat yourself. Do not describe ambient sounds or noise or silence, just omit. Break the text into paragraphs."
+        
+        initialPrompt.withCString { cString in
+            self.whisperParams.initial_prompt = cString
+        }
         self.language = .auto
     }
 
