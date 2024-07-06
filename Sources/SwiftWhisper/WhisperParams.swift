@@ -8,8 +8,7 @@ public class WhisperParams {
 
     internal var whisperParams: whisper_full_params
     internal var _language: UnsafeMutablePointer<CChar>?
-    var defaultinitialPrompt = "Use capital letters and punctuation. Do not repeat yourself. Do not describe ambient sounds or noise or silence, just omit. Break the text into paragraphs."
-    public init(strategy: WhisperSamplingStrategy = .greedy, initialPrompt: String = defaultinitialPrompt) {
+    public init(strategy: WhisperSamplingStrategy = .greedy, initialPrompt: String) {
         self.whisperParams = whisper_full_default_params(whisper_sampling_strategy(rawValue: strategy.rawValue))
         
         initialPrompt.withCString { cString in
