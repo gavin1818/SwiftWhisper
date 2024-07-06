@@ -4,7 +4,7 @@ import whisper_cpp
 // swiftlint:disable identifier_name
 @dynamicMemberLookup
 public class WhisperParams {
-    public static let `default` = WhisperParams(strategy: .greedy)
+    public static let `default` = WhisperParams(strategy: .greedy, initialPrompt: "")
 
     internal var whisperParams: whisper_full_params
     internal var _language: UnsafeMutablePointer<CChar>?
